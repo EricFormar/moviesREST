@@ -1,8 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `moviesrest_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `moviesrest_db`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: localhost    Database: movies_db
+-- Host: localhost    Database: moviesrest_db
 -- ------------------------------------------------------
 -- Server version	8.0.32
 
@@ -18,27 +16,6 @@ USE `moviesrest_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `actor_episode`
---
-
-DROP TABLE IF EXISTS `actor_episode`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `actor_episode` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `actor_id` int unsigned NOT NULL,
-  `episode_id` int unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `actor_episode_actor_id_foreign` (`actor_id`),
-  KEY `actor_episode_episode_id_foreign` (`episode_id`),
-  CONSTRAINT `actor_episode_actor_id_foreign` FOREIGN KEY (`actor_id`) REFERENCES `actors` (`id`),
-  CONSTRAINT `actor_episode_episode_id_foreign` FOREIGN KEY (`episode_id`) REFERENCES `episodes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `actor_episode`
 --
 
@@ -49,57 +26,13 @@ INSERT INTO `actor_episode` VALUES (1,NULL,NULL,32,1),(2,NULL,NULL,32,2),(3,NULL
 UNLOCK TABLES;
 
 --
--- Table structure for table `actor_movie`
---
-
-DROP TABLE IF EXISTS `actor_movie`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `actor_movie` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `actor_id` int unsigned NOT NULL,
-  `movie_id` int unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `actor_movie_actor_id_foreign` (`actor_id`),
-  KEY `actor_movie_movie_id_foreign` (`movie_id`),
-  CONSTRAINT `actor_movie_actor_id_foreign` FOREIGN KEY (`actor_id`) REFERENCES `actors` (`id`),
-  CONSTRAINT `actor_movie_movie_id_foreign` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=409 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `actor_movie`
 --
 
 LOCK TABLES `actor_movie` WRITE;
 /*!40000 ALTER TABLE `actor_movie` DISABLE KEYS */;
-INSERT INTO `actor_movie` VALUES (297,'2023-03-31 16:33:38','2023-03-31 16:33:38',6,2),(298,'2023-03-31 16:33:38','2023-03-31 16:33:38',5,2),(299,'2023-03-31 16:33:38','2023-03-31 16:33:38',4,2),(306,'2023-03-31 16:49:22','2023-03-31 16:49:22',9,4),(307,'2023-03-31 16:49:22','2023-03-31 16:49:22',8,4),(308,'2023-03-31 16:49:22','2023-03-31 16:49:22',7,4),(312,'2023-03-31 16:49:45','2023-03-31 16:49:45',18,7),(313,'2023-03-31 16:49:45','2023-03-31 16:49:45',17,7),(314,'2023-03-31 16:49:45','2023-03-31 16:49:45',16,7),(338,'2023-03-31 17:24:50','2023-03-31 17:24:50',13,9),(339,'2023-03-31 17:24:50','2023-03-31 17:24:50',14,9),(340,'2023-03-31 17:24:50','2023-03-31 17:24:50',22,9),(341,'2023-03-31 17:24:50','2023-03-31 17:24:50',15,9),(345,'2023-03-31 17:59:23','2023-03-31 17:59:23',19,10),(346,'2023-03-31 17:59:23','2023-03-31 17:59:23',20,10),(347,'2023-03-31 18:06:13','2023-03-31 18:06:13',22,11),(348,'2023-03-31 18:06:13','2023-03-31 18:06:13',21,11),(349,'2023-03-31 18:06:13','2023-03-31 18:06:13',23,11),(353,'2023-03-31 18:18:22','2023-03-31 18:18:22',28,13),(354,'2023-03-31 18:18:22','2023-03-31 18:18:22',27,13),(359,'2023-03-31 19:01:13','2023-03-31 19:01:13',29,20),(365,'2023-04-05 07:02:20','2023-04-05 07:02:20',1,1),(366,'2023-04-05 07:02:20','2023-04-05 07:02:20',3,1),(367,'2023-04-05 07:02:20','2023-04-05 07:02:20',2,1),(368,'2023-04-05 07:37:01','2023-04-05 07:37:01',9,3),(369,'2023-04-05 07:37:01','2023-04-05 07:37:01',8,3),(370,'2023-04-05 07:37:01','2023-04-05 07:37:01',7,3),(385,'2023-04-05 07:42:30','2023-04-05 07:42:30',28,14),(386,'2023-04-05 07:42:30','2023-04-05 07:42:30',27,14),(390,'2023-04-05 07:43:02','2023-04-05 07:43:02',24,12),(391,'2023-04-05 07:43:02','2023-04-05 07:43:02',26,12),(392,'2023-04-05 07:43:02','2023-04-05 07:43:02',25,12),(393,'2023-04-05 07:44:20','2023-04-05 07:44:20',13,8),(394,'2023-04-05 07:44:20','2023-04-05 07:44:20',14,8),(395,'2023-04-05 07:44:20','2023-04-05 07:44:20',15,8),(396,'2023-04-05 07:44:50','2023-04-05 07:44:50',30,21),(397,'2023-04-05 07:44:56','2023-04-05 07:44:56',12,5),(398,'2023-04-05 07:44:56','2023-04-05 07:44:56',11,5),(399,'2023-04-05 07:44:56','2023-04-05 07:44:56',10,5),(406,'2023-04-05 13:46:26','2023-04-05 13:46:26',13,6),(407,'2023-04-05 13:46:26','2023-04-05 13:46:26',14,6),(408,'2023-04-05 13:46:26','2023-04-05 13:46:26',15,6);
 /*!40000 ALTER TABLE `actor_movie` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `actors`
---
-
-DROP TABLE IF EXISTS `actors`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `actors` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `first_name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `last_name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `rating` decimal(3,1) DEFAULT NULL,
-  `photo` text COLLATE utf8mb3_unicode_ci,
-  `favorite_movie_id` int unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `actors_favorite_movie_id_foreign` (`favorite_movie_id`),
-  CONSTRAINT `actors_favorite_movie_id_foreign` FOREIGN KEY (`favorite_movie_id`) REFERENCES `movies` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `actors`
@@ -112,28 +45,6 @@ INSERT INTO `actors` VALUES (1,NULL,'2023-03-28 09:48:52','Sam','Worthington',7.
 UNLOCK TABLES;
 
 --
--- Table structure for table `episodes`
---
-
-DROP TABLE IF EXISTS `episodes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `episodes` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `title` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
-  `number` int unsigned DEFAULT NULL,
-  `release_date` datetime NOT NULL,
-  `rating` decimal(3,1) NOT NULL,
-  `season_id` int unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `episodes_season_id_foreign` (`season_id`),
-  CONSTRAINT `episodes_season_id_foreign` FOREIGN KEY (`season_id`) REFERENCES `seasons` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `episodes`
 --
 
@@ -142,25 +53,6 @@ LOCK TABLES `episodes` WRITE;
 INSERT INTO `episodes` VALUES (1,NULL,NULL,'Winter Is Coming',1,'2011-01-01 00:00:00',7.3,1),(2,NULL,NULL,'The North Remembers',1,'2012-01-01 00:00:00',8.3,2),(3,NULL,NULL,'Valar Dohaeris',1,'2013-01-01 00:00:00',6.3,3),(4,NULL,NULL,'Two Swords',1,'2014-01-01 00:00:00',7.5,4),(5,NULL,NULL,'The Wars to Come',1,'2015-01-01 00:00:00',9.3,5),(6,NULL,NULL,'The Red Woman',1,'2016-01-01 00:00:00',7.7,6),(7,NULL,NULL,'Pilot',1,'2005-01-01 00:00:00',7.3,8),(8,NULL,NULL,'In My Time of Dying',1,'2006-01-01 00:00:00',8.3,9),(9,NULL,NULL,'The Magnificent Seven',1,'2007-01-01 00:00:00',6.3,10),(10,NULL,NULL,'Lazarus Rising',1,'2008-01-01 00:00:00',7.5,11),(11,NULL,NULL,'Sympathy for the Devil',1,'2009-01-01 00:00:00',9.3,12),(12,NULL,NULL,'Exile on Main St.',1,'2010-01-01 00:00:00',7.7,13),(13,NULL,NULL,'Meet the New Boss',1,'2011-01-01 00:00:00',7.3,14),(14,NULL,NULL,'We Need to Talk About Kevin',1,'2012-01-01 00:00:00',8.3,15),(15,NULL,NULL,'I Think Im Gonna Like It Here',1,'2013-01-01 00:00:00',6.3,16),(16,NULL,NULL,'A Very Special Supernatural Special',1,'2014-01-01 00:00:00',7.5,17),(17,NULL,NULL,'Out of the Darkness, Into the Fire',1,'2015-01-01 00:00:00',9.3,18),(18,NULL,NULL,'Days Gone Bye',1,'2010-01-01 00:00:00',7.3,20),(19,NULL,NULL,'What Lies Ahead',1,'2011-01-01 00:00:00',8.3,21),(20,NULL,NULL,'Seed',1,'2012-01-01 00:00:00',6.3,22),(21,NULL,NULL,'30 Days Without an Accident',1,'2013-01-01 00:00:00',7.5,23),(22,NULL,NULL,'No Sanctuary',1,'2014-01-01 00:00:00',9.3,24),(23,NULL,NULL,'First Time Again',1,'2015-01-01 00:00:00',7.7,25),(24,NULL,NULL,'Pilot',1,'2011-01-01 00:00:00',7.3,27),(25,NULL,NULL,'The Contingency',1,'2012-01-01 00:00:00',8.3,28),(26,NULL,NULL,'Liberty',1,'2013-01-01 00:00:00',6.3,29),(27,NULL,NULL,'Panopticon',1,'2015-01-01 00:00:00',7.5,30),(28,NULL,NULL,'B.S.O.D.',1,'2016-01-01 00:00:00',9.3,31),(29,NULL,NULL,'Pilot',1,'2005-01-01 00:00:00',7.3,32),(30,NULL,NULL,'The Bad Fish Paradigm',1,'2006-01-01 00:00:00',8.3,33),(31,NULL,NULL,'The Electric Can Opener Fluctuation',1,'2007-01-01 00:00:00',6.3,34),(32,NULL,NULL,'The Robotic Manipulation',1,'2008-01-01 00:00:00',7.5,35),(33,NULL,NULL,'The Skank Reflex Analysis',1,'2009-01-01 00:00:00',9.3,36),(34,NULL,NULL,'The Date Night Variable',1,'2010-01-01 00:00:00',7.7,37),(35,NULL,NULL,'The Hofstadter Insufficiency',1,'2011-01-01 00:00:00',7.3,38),(36,NULL,NULL,'The Locomotion Interruption',1,'2012-01-01 00:00:00',8.3,39),(37,NULL,NULL,'The Matrimonial Momentum',1,'2013-01-01 00:00:00',6.3,40),(38,NULL,NULL,'Pilot',1,'2009-01-01 00:00:00',7.3,42),(39,NULL,NULL,'Seven Thirty-Seven',1,'2010-01-01 00:00:00',8.3,43),(40,NULL,NULL,'No Más',1,'2011-01-01 00:00:00',6.3,44),(41,NULL,NULL,'Box Cutter',1,'2012-01-01 00:00:00',7.5,45),(42,NULL,NULL,'Live Free or Die',1,'2013-01-01 00:00:00',9.3,46),(43,NULL,NULL,'Madrigal',2,'2013-02-01 00:00:00',9.3,46),(44,NULL,NULL,'Hazard Pay',3,'2013-03-01 00:00:00',9.3,46),(45,NULL,NULL,'Fifty-One',4,'2013-04-01 00:00:00',9.3,46),(46,NULL,NULL,'Dead Freight',5,'2013-05-01 00:00:00',9.3,46),(47,NULL,NULL,'Buyout',6,'2013-06-01 00:00:00',9.3,46),(48,NULL,NULL,'Say My Name',7,'2013-06-01 00:00:00',9.3,46),(49,NULL,NULL,'Gliding Over All',8,'2013-07-01 00:00:00',9.3,46),(50,NULL,NULL,'Blood Money',9,'2013-07-01 00:00:00',9.3,46),(51,NULL,NULL,'Buried',10,'2013-07-01 00:00:00',9.3,46),(52,NULL,NULL,'Confessions',11,'2013-08-01 00:00:00',9.3,46),(53,NULL,NULL,'Rabid Dog',12,'2013-09-01 00:00:00',9.3,46),(54,NULL,NULL,'To hajiilee',13,'2013-10-01 00:00:00',9.3,46),(55,NULL,NULL,'Ozymandias',14,'2013-11-01 00:00:00',9.3,46),(56,NULL,NULL,'Granite State',15,'2013-12-01 00:00:00',9.3,46),(57,NULL,NULL,'Felina',16,'2013-12-01 00:00:00',9.3,46);
 /*!40000 ALTER TABLE `episodes` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `genres`
---
-
-DROP TABLE IF EXISTS `genres`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `genres` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `ranking` int unsigned NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `genres_ranking_unique` (`ranking`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `genres`
@@ -173,21 +65,6 @@ INSERT INTO `genres` VALUES (1,'2016-07-04 03:00:00',NULL,'Comedia',1,1),(2,'201
 UNLOCK TABLES;
 
 --
--- Table structure for table `migrations`
---
-
-DROP TABLE IF EXISTS `migrations`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `migrations` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `batch` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `migrations`
 --
 
@@ -198,60 +75,14 @@ INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,
 UNLOCK TABLES;
 
 --
--- Table structure for table `movies`
---
-
-DROP TABLE IF EXISTS `movies`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `movies` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `title` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `rating` decimal(3,1) unsigned NOT NULL,
-  `awards` int unsigned NOT NULL DEFAULT '0',
-  `release_date` datetime NOT NULL,
-  `length` int unsigned DEFAULT NULL,
-  `poster` varchar(255) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
-  `review` text COLLATE utf8mb3_unicode_ci,
-  `genre_id` int unsigned DEFAULT NULL,
-  `banner` varchar(255) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
-  `thumbnail` varchar(255) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
-  `banner_show` tinyint(1) DEFAULT NULL,
-  `thumbnail_show` tinyint(1) DEFAULT NULL,
-  `visible` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `movies_genre_id_foreign` (`genre_id`),
-  CONSTRAINT `movies_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `movies`
 --
 
 LOCK TABLES `movies` WRITE;
 /*!40000 ALTER TABLE `movies` DISABLE KEYS */;
-INSERT INTO `movies` VALUES (1,NULL,'2023-04-05 07:02:20','Avatar',7.9,3,'2009-12-17 00:00:00',120,'1680202029187_poster_.jpg','Un marine parapléjico es enviado a la luna Pandora en una misión única que se convierte en un debate entre seguir órdenes y proteger el mundo donde se siente como en casa. ',5,'1680678140375_banner_.jpg','1680202208835_thumbnail_.jpg',1,0,1),(2,NULL,'2023-03-31 16:33:38','Titanic',7.7,11,'1997-01-19 00:00:00',320,'1680202695468_poster_.jpg','El buscador de tesoros Brock Lovett se encuentra en los restos del Titanic una pintura de una mujer casi desnuda que porta un collar. Rose, una anciana de 102 años, revela que ella es quien aparece en el retrato, por lo que es invitada a conocer a un grupo de personas y hablar sobre su experiencia. Fue en 1912 cuando ella fue una de los pasajeros del Titanic junto Jack Dawson (Leonardo DiCaprio), un hombre sin dinero. Rose (Kate Winslet interpretando a la versión joven) regresaba a Philadelphia junto a su familia y su adinerado prometido Cal Hockley (Bill Zane). Después de conocer al joven Jack, Rose empieza a interesarse en él, creando una reacción muy negativa en Cal. Así comienza una relación amorosa entre dos jóvenes de clases sociales diferentes, que deben de huir del desprecio de Cal y la familia de Jane, quienes desaprueban su comportamiento e intentan alejarlos. ',3,'1680203048242_banner_.jpg','1680202844811_thumbnail_.jpeg',1,0,1),(3,NULL,'2023-04-05 07:37:01','La Guerra de las galaxias: Episodio VI',9.1,7,'1983-12-16 00:00:00',134,'1680222666936_poster_.jpg','En la épica conclusión de la saga espacial, el Imperio se prepara para destruir a la Rebelión de una vez por todas, utilizando una nueva y más poderosa Estrella de la Muerte. Ante esta inminente amenaza, la Tropa rebelde se organiza para llevar a cabo un ataque masivo a la estación espacial. Mientras ambos bandos calculan sus movimientos, Luke Skywalker (Mark Hamill) y sus fieles aliados emprenden un viaje hacia Tatooine para rescatar al carismático Han Solo (Harrison Ford) de las garras de Jabba. Tras una visita a su enfermo maestro, Luke confirma no sólo la terrible verdad acerca de su ascendencia, sino que su entrenamiento Jedi ha concluido y lo último que queda por hacer es aceptar su destino y confrontar al temible Darth Vader en un emocionante final que determinará el destino de la galaxia. ¿Podrá la luz prevalecer y derrotar al lado oscuro de la Fuerza? ',5,'1680281236617_banner_.jpg','1680680221185_thumbnail_.jpg',1,0,1),(4,NULL,'2023-03-31 16:49:22','La Guerra de las galaxias: Episodio VII',9.0,6,'2015-12-17 00:00:00',135,'1680223754223_poster_.jpg','Esta nueva entrega de la Guerra de las Galaxias se establecerá 30 años después de \'El retorno del Jedi\', contando con una nueva generación tanto de héroes como de oscuros villanos y, por supuesto, el regreso de algunos de los personajes favoritos de los fans',5,'1680223664720_banner_.jpg','1680223664737_thumbnail_.jpg',0,1,1),(5,NULL,'2023-04-05 07:44:56','Parque Jurasico',8.3,5,'1993-01-04 00:00:00',127,'1680230285062_poster_.jpg','Durante una excursión, un parque sufre un problema con su fuente de poder eléctrico, por lo que pierden el control de los dinosaurios clonados',5,'1680230873857_banner_.jpg','1680230873858_thumbnail_.jpg',0,0,1),(6,NULL,'2023-04-05 13:46:26','Harry Potter y las Reliquias de la Muerte - Parte 2',9.0,2,'2011-07-04 00:00:00',130,'1680257788843_poster_.jpg','El final ha llegado. Harry, Hermione y Ron tendrán que recuperar la espada de Gryffindor para encontrar y destruir los últimos horrocruxes. Mientras tanto, Lord Voldemort está a punto de apoderarse por completo de Hogwarts y de conseguir su objetivo: matar a Harry Potter. La única esperanza de Harry es encontrar los horrocruxes antes de que Voldemort lo encuentre a él. Buscando pistas, descubre una antigua y olvidada historia: la leyenda de las reliquias de la muerte, que podría dar al malvado Lord el poder definitivo. Pero el futuro de Harry está escrito desde que nació e incluye una misión para la que se ha estado preparando desde que llegó a Hogwarts: la batalla final contra Voldemort.',6,'1680257788848_banner_.jpg','1680257788850_thumbnail_.jpg',1,1,1),(7,NULL,'2023-03-31 16:49:45','Transformers: el lado oscuro de la luna',0.9,1,'2011-06-29 00:00:00',154,'1680262013958_poster_.jpg','El descubrimiento de una nave Cybertroniana oculta en la luna pone a los Autobots y Decepticons en una carrera para llegar a ella y utilizar sus secretos.',5,'1680258174046_banner_.jpg','1680258174048_thumbnail_.jpeg',0,1,1),(8,NULL,'2023-04-05 07:44:20','Harry Potter y la piedra filosofal',10.0,1,'2001-04-04 00:00:00',152,'1680262512410_poster_.jpg','El día en que cumple once años, Harry Potter se entera de que es hijo de dos destacados hechiceros, de los que ha heredado poderes mágicos. En la escuela Hogwarts de Magia y Hechicería, donde se educa con otros niños que también tienen poderes especiales, aprenderá todo lo necesario para ser mago.',8,'1680262512418_banner_.jpg','1680262512421_thumbnail_.jpg',0,0,1),(9,NULL,'2023-03-31 17:24:50','Harry Potter y la cámara de los secretos',3.5,2,'2002-08-04 00:00:00',200,'1680283487067_poster_.webp','Terminado el verano, Harry (Radcliffe) no ve la hora de abandonar la casa de sus odiosos tíos, pero, inesperadamente se presenta en su dormitorio Dobby, un elfo doméstico, que le anuncia que correrá un gran peligro si vuelve a Hogwarts. A pesar de los esfuerzos del elfo por retenerlo, Harry es rescatado por Ron y sus hermanos, con la ayuda de un coche volador, y recibido con los brazos abiertos en el cálido hogar de los Weasley. A pesar de que a Harry y a Ron les impiden entrar en el andén 9 ¾ y subir al Expreso de Hogwarts, ellos se las arreglan para llegar a tiempo de empezar el nuevo curso. Las hazañas de nuestro héroe ya se han extendido por todo el colegio, convirtiéndolo en el centro de una atención no deseada. ',8,'1680283487075_banner_.jpg','1680283487077_thumbnail_.jpg',0,1,1),(10,NULL,'2023-03-31 17:59:23','El rey león',9.1,3,'1994-02-04 00:00:00',89,'1680285563267_poster_.webp','Una de las animaciones musicales más populares de Disney, \'\'El Rey León\'\' presenta la historia del viaje de un león llamado Simba quien algún día según su destino, se convertirá en rey. Durante el recorrido, Simba se va encontrando con diferentes situaciones y compañeros de viaje que le ayudarán a afrontar su destino.',10,'1680285563269_banner_.jpg','1680285563270_thumbnail_.jpg',1,0,1),(11,NULL,'2023-03-31 18:06:13','Alicia en el país de las maravillas',5.7,2,'2010-07-04 00:00:00',108,'1680285972980_poster_.jpg','Alicia, una joven de 19 años, regresa al mundo mágico donde tuvo una aventura en su niñez, reuniéndose con sus viejos amigos y descubriendo su verdadero destino: acabar con el terrorífico reinado de la Reina Roja. ',NULL,'1680285972985_banner_.jpg','1680285972988_thumbnail_.webp',1,0,1),(12,NULL,'2023-04-05 07:43:02','Buscando a Nemo',8.3,2,'2003-07-04 00:00:00',110,'1680286449904_poster_.webp','En esta gran aventura bajo el agua, con personajes memorables, humor y emoción. “Buscando a Nemo” sigue el cómico y trascendental viaje de un pez payaso sobre protector, llamado Marlin, y su hijo Nemo, quien es separado de la Gran Barrera del Arrecife , cuando Nemo es llevado de manera inesperada, lejos de su hogar en el océano y arrojado en un tanque de peces en la oficina de un dentista. Impulsado por la compañía de Dory, una pez amistosa pero olvidadiza, Marlin comienza un peligroso recorrido y se encuentra como el héroe de un intento épico para rescatar a su hijo.',8,'1680286449908_banner_.jpg','1680286449912_thumbnail_.webp',1,0,1),(13,NULL,'2023-03-31 18:18:22','Toy Story',6.1,0,'1995-03-04 00:00:00',81,'1680286702193_poster_.jpg','El vaquero Woody es el juguete favorito del pequeño Andy, pero las cosas cambian cuando llega Buzz Lightyear, el héroe espacial de moda. Woody intenta deshacerse de él, pero las cosas no salen como las planeó y termina perdiéndose en la ciudad con Buzz como su única compañía. Uniendo sus fuerzas para regresar a casa, los dos rivales empiezan una aventura que los lleva a las manos de Sid, un chico del vecindario que destruye juguetes para crear versiones “mutantes”. Mientras permanecen atrapados en casa de Sid, los dos juguetes crean una amistad genuina y aprenden que a través del respeto y la confianza es posible escapar del peligro y regresar a casa.',7,'1680286702200_banner_.jpg',NULL,1,0,1),(14,NULL,'2023-04-05 07:42:30','Toy Story 2',3.2,2,'1999-04-04 00:00:00',120,'1680287691357_poster_.jpg','Esta vez, la aventura y diversión continúa cuando Andy se va a un campamento de verano y los juguetes permanecen en casa. La historia cambia cuando un coleccionista de juguetes obsesivo se lleva a Woody –quien no tiene ni la más mínima idea de lo que vale en el mercado. Ahora depende de Buzz Lightyear y el resto del equipo –Señor Cara de Papa, Slinky, Rec y Hamm- emprender un viaje para salvar a su amigo de convertirse en una pieza de museo. La misión de los juguetes es muy emocionante ya que deberán llegar a casa antes de que Andy lo haga.',7,'1680287691358_banner_.jpg','1680287691361_thumbnail_.jpg',0,0,1),(15,NULL,'2023-03-31 18:39:39','La vida es bella',8.3,5,'1999-10-04 00:00:00',115,'1680287979156_poster_.jpg','Cuando un bibliotecario judío y su hijo se convierten en víctimas del Holocausto, él utiliza una mezcla perfecta de humor, voluntad y mucha imaginación para proteger a su hijo de los peligros en su campamento.',3,'1680287979158_banner_.jpg','1680287979158_thumbnail_.jpg',0,0,1),(16,NULL,'2023-03-31 18:46:52','Mi pobre angelito',3.2,1,'1990-01-04 00:00:00',120,'1680288412256_poster_.webp','Kevin McAllister es un niño de ocho años, miembro de una familia numerosa, que accidentalmente se queda abandonado en su casa cuando toda la familia se marcha a pasar las vacaciones a Francia. Kevin aprende a valerse por sí mismo e incluso a protegerse de Harry y Marv, dos bribones que se proponen asaltar todas las casas cerradas de su vecindario. en cuanto su madre lo echa en falta, regresa apresuradamente a Chicago para recuperar a su hijo.',1,'1680288412263_banner_.jpg','1680288412265_thumbnail_.jpg',0,0,1),(17,NULL,'2023-03-31 18:50:42','Intensamente',9.0,2,'2008-07-04 00:00:00',120,'1680288642718_poster_.webp','Riley es una pequeña de doce años que se muda a San Francisco por culpa del trabajo de su papá. La idea del cambio no le parece una buena idea. La niña se acerca a la adolescencia y las emociones que conviven dentro de su cabeza arman una verdadera revolución. Tristeza, Alegría, Desagrado, Furia y Temor se alternan el turno para controlar su comportamiento desde el centro de mando dentro su cabeza, lugar desde el que también se gestiona el almacenamiento de sus recuerdos. Cuando los preciosos recuerdos de la infancia se empiezan a fragmentar, Alegría y Tristeza se ven obligadas a abandonar el centro de mando para tratar de salvar los recuerdos de la niña del amenazante olvido. Intensamente es una cinta animada de Pixar que ofrece una mirada a lo más profundo de nuestras emociones.',7,'1680288642728_banner_.jpg','1680288642729_thumbnail_.webp',0,0,1),(18,NULL,'2023-04-05 07:43:57','Carrozas de fuego',9.9,7,'1981-07-04 00:00:00',180,'1680288828980_poster_.jpg','Dos atletas de pista británicos, uno judío determinado y el otro cristiano devoto compiten en los Juegos Olímpicos de 1924.',NULL,'1680288828981_banner_.jpg','1680288828982_thumbnail_.jpg',0,1,1),(20,NULL,'2023-03-31 19:01:13','I am Sam',9.0,4,'1999-03-04 00:00:00',130,'1680289273136_poster_.jpg','Una mujer sin techo abandona a su hija el mismo día en que nace dejándola en manos de su padre, Sam Dawson, quien tiene una deficiencia mental, ya que ella no quería tener un bebé con él, solo buscaba un lugar donde dormir. La película narra, al compás de los Beatles, las dificultades que tienen que atravesar cuando, a partir de los 7 años, Lucy empieza a tener más capacidad mental que su padre. El Estado se cuestiona la capacidad de Sam para educar a su hija por lo que se enfrenta a un juicio que le puede hacer perder su custodia.',3,'1680289273140_banner_.jpg','1680289273141_thumbnail_.webp',1,0,1),(21,NULL,'2023-04-05 07:44:50','Hotel Transylvania',7.1,1,'2012-05-04 00:00:00',90,'1680289479270_poster_.jpg','Bienvenido al Hotel Transylvania de Drácula, fastuoso resort de cinco estrellas, donde los monstruos y sus familias pueden vivir libres de ser monstruos que son sin que los seres humanos los molesten. En un fin de semana especial, Drácula ha invitado a algunos de los monstruos más famosos del mundo - Frankenstein y su novia, la Momia, el Hombre Invisible, una familia de hombres lobo, y más - para celebrar el cumpleaños número 118 de su hija Mavis. Para Drácula, atender a todos esos monstruos legendarios no es problema - pero su mundo puede derrumbarse cuando un chico ordinario tropieza en el hotel.',10,'1680289479281_banner_.jpg','1680289479282_thumbnail_.jpg',0,1,1),(22,NULL,'2023-03-31 19:12:32','Titanes del pacífico',9.0,7,'2013-09-09 00:00:00',120,'1680289931786_poster_.jpg','Cuando legiones de monstruosas criaturas, denominadas Kaiju, comienzan a salir del mar, se inicia una guerra que acabará con millones de vidas y que consumirá los recursos de la humanidad durante interminables años. Para combatir a los Kaiju gigantes diseñan un tipo especial de arma: enormes robots, llamados Jaegers, que son controlados simultáneamente por dos pilotos cuyas mentes están bloqueadas en un puente neural. Pero incluso los Jaegers proporcionan poca defensa ante los incansables Kaiju. A punto de la derrota, las fuerzas que defienden a la humanidad no tienen otra elección que recurrir a dos insólitos héroes: un ex piloto acabado (Charlie Hunnam) y un aprendiz que todavía no se ha puesto a prueba (Rinko Kikuchi). Ambos se unen para traer a un legendario pero al parecer obsoleto Jaeger del pasado. Juntos, son la última esperanza de la humanidad frente al Apocalipsis que se avecina.',4,'1680289931789_banner_.jpg','1680289931793_thumbnail_.jpg',0,0,1);
+INSERT INTO `movies` VALUES (1,NULL,'2023-05-05 10:26:32','Avatar',7.9,3,'2009-12-17 00:00:00',120,'https://res.cloudinary.com/ericm76/image/upload/v1683282389/movies/u7fahp0nyt7tyvof5i7n.jpg','Un marine parapléjico es enviado a la luna Pandora en una misión única que se convierte en un debate entre seguir órdenes y proteger el mundo donde se siente como en casa. ',5,'https://res.cloudinary.com/ericm76/image/upload/v1683282390/movies/b6hct5nrca0s7z1lacuk.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683282392/movies/wmqz2hhtu5vzsgqubgip.jpg',1,0,1,'movies/u7fahp0nyt7tyvof5i7n','movies/b6hct5nrca0s7z1lacuk','movies/wmqz2hhtu5vzsgqubgip'),(2,NULL,'2023-05-05 10:46:16','Titanic',7.7,11,'1997-01-19 00:00:00',320,'https://res.cloudinary.com/ericm76/image/upload/v1683283574/movies/ubrginoa62jrfjerrilu.jpg','El buscador de tesoros Brock Lovett se encuentra en los restos del Titanic una pintura de una mujer casi desnuda que porta un collar. Rose, una anciana de 102 años, revela que ella es quien aparece en el retrato, por lo que es invitada a conocer a un grupo de personas y hablar sobre su experiencia. Fue en 1912 cuando ella fue una de los pasajeros del Titanic junto Jack Dawson (Leonardo DiCaprio), un hombre sin dinero. Rose (Kate Winslet interpretando a la versión joven) regresaba a Philadelphia junto a su familia y su adinerado prometido Cal Hockley (Bill Zane). Después de conocer al joven Jack, Rose empieza a interesarse en él, creando una reacción muy negativa en Cal. Así comienza una relación amorosa entre dos jóvenes de clases sociales diferentes, que deben de huir del desprecio de Cal y la familia de Jane, quienes desaprueban su comportamiento e intentan alejarlos. ',3,'https://res.cloudinary.com/ericm76/image/upload/v1683283575/movies/ihtvg4xw2alswuugqif9.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683283576/movies/f5ivlttbhm2hstvboba4.jpg',1,0,1,'movies/ubrginoa62jrfjerrilu','movies/ihtvg4xw2alswuugqif9','movies/f5ivlttbhm2hstvboba4'),(3,NULL,'2023-05-05 10:58:15','La Guerra de las galaxias: Episodio VI',9.1,7,'1983-12-16 00:00:00',134,'https://res.cloudinary.com/ericm76/image/upload/v1683284292/movies/yn2hxjttmvb6vvskmzvg.jpg','En la épica conclusión de la saga espacial, el Imperio se prepara para destruir a la Rebelión de una vez por todas, utilizando una nueva y más poderosa Estrella de la Muerte. Ante esta inminente amenaza, la Tropa rebelde se organiza para llevar a cabo un ataque masivo a la estación espacial. Mientras ambos bandos calculan sus movimientos, Luke Skywalker (Mark Hamill) y sus fieles aliados emprenden un viaje hacia Tatooine para rescatar al carismático Han Solo (Harrison Ford) de las garras de Jabba. Tras una visita a su enfermo maestro, Luke confirma no sólo la terrible verdad acerca de su ascendencia, sino que su entrenamiento Jedi ha concluido y lo último que queda por hacer es aceptar su destino y confrontar al temible Darth Vader en un emocionante final que determinará el destino de la galaxia. ¿Podrá la luz prevalecer y derrotar al lado oscuro de la Fuerza? ',5,'https://res.cloudinary.com/ericm76/image/upload/v1683284294/movies/jth9go6d11iv7euolkry.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683284295/movies/kw5jdxqonbktkk5hxxkr.jpg',1,0,1,'movies/yn2hxjttmvb6vvskmzvg','movies/jth9go6d11iv7euolkry','movies/kw5jdxqonbktkk5hxxkr'),(4,NULL,'2023-05-05 10:55:18','La Guerra de las galaxias: Episodio VII',9.0,6,'2015-12-17 00:00:00',135,'https://res.cloudinary.com/ericm76/image/upload/v1683284114/movies/mb0yddrjrpxw14dmd7qs.jpg','Esta nueva entrega de la Guerra de las Galaxias se establecerá 30 años después de \'El retorno del Jedi\', contando con una nueva generación tanto de héroes como de oscuros villanos y, por supuesto, el regreso de algunos de los personajes favoritos de los fans',5,'https://res.cloudinary.com/ericm76/image/upload/v1683284116/movies/xbn8zmenkrqzeuu17mfh.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683284118/movies/jy56qa7zr2pzg1lx30fy.jpg',0,1,1,'movies/mb0yddrjrpxw14dmd7qs','movies/xbn8zmenkrqzeuu17mfh','movies/jy56qa7zr2pzg1lx30fy'),(5,NULL,'2023-05-05 11:00:04','Parque Jurasico',8.3,5,'1993-01-04 00:00:00',127,'https://res.cloudinary.com/ericm76/image/upload/v1683284400/movies/b1eznxefrn1ghglj1485.jpg','Durante una excursión, un parque sufre un problema con su fuente de poder eléctrico, por lo que pierden el control de los dinosaurios clonados',5,'https://res.cloudinary.com/ericm76/image/upload/v1683284402/movies/sxdr7tpbvv3l7u5hbkb4.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683284404/movies/bnickkmih7pxlwch8mkj.jpg',0,0,1,'movies/b1eznxefrn1ghglj1485','movies/sxdr7tpbvv3l7u5hbkb4','movies/bnickkmih7pxlwch8mkj'),(6,NULL,'2023-05-05 11:01:17','Harry Potter y las Reliquias de la Muerte - Parte 2',9.0,2,'2011-07-04 00:00:00',130,'https://res.cloudinary.com/ericm76/image/upload/v1683284474/movies/ctgwvhc1acpokovrpmnj.jpg','El final ha llegado. Harry, Hermione y Ron tendrán que recuperar la espada de Gryffindor para encontrar y destruir los últimos horrocruxes. Mientras tanto, Lord Voldemort está a punto de apoderarse por completo de Hogwarts y de conseguir su objetivo: matar a Harry Potter. La única esperanza de Harry es encontrar los horrocruxes antes de que Voldemort lo encuentre a él. Buscando pistas, descubre una antigua y olvidada historia: la leyenda de las reliquias de la muerte, que podría dar al malvado Lord el poder definitivo. Pero el futuro de Harry está escrito desde que nació e incluye una misión para la que se ha estado preparando desde que llegó a Hogwarts: la batalla final contra Voldemort.',6,'https://res.cloudinary.com/ericm76/image/upload/v1683284475/movies/peqt30uesatmy6kwltfe.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683284477/movies/dd2qwwi2sxzsgkr0scee.jpg',1,1,1,'movies/ctgwvhc1acpokovrpmnj','movies/peqt30uesatmy6kwltfe','movies/dd2qwwi2sxzsgkr0scee'),(7,NULL,'2023-05-05 11:02:33','Transformers: el lado oscuro de la luna',0.9,1,'2011-06-29 00:00:00',154,'https://res.cloudinary.com/ericm76/image/upload/v1683284549/movies/unogg51hiahzklfolpn4.jpg','El descubrimiento de una nave Cybertroniana oculta en la luna pone a los Autobots y Decepticons en una carrera para llegar a ella y utilizar sus secretos.',5,'https://res.cloudinary.com/ericm76/image/upload/v1683284551/movies/w4yl3gqzkkdirkmr1gyt.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683284553/movies/ikjdpdqlfijm6jqlgtdj.jpg',0,1,1,'movies/unogg51hiahzklfolpn4','movies/w4yl3gqzkkdirkmr1gyt','movies/ikjdpdqlfijm6jqlgtdj'),(8,NULL,'2023-05-05 11:04:08','Harry Potter y la piedra filosofal',10.0,1,'2001-04-04 00:00:00',152,'https://res.cloudinary.com/ericm76/image/upload/v1683284644/movies/fxo1a4fmjvydypiegksz.jpg','El día en que cumple once años, Harry Potter se entera de que es hijo de dos destacados hechiceros, de los que ha heredado poderes mágicos. En la escuela Hogwarts de Magia y Hechicería, donde se educa con otros niños que también tienen poderes especiales, aprenderá todo lo necesario para ser mago.',8,'https://res.cloudinary.com/ericm76/image/upload/v1683284646/movies/gsv7ojeto1ukn7adxfux.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683284648/movies/wkjjy8pmvxnyiv1lqbjd.jpg',0,0,1,'movies/fxo1a4fmjvydypiegksz','movies/gsv7ojeto1ukn7adxfux','movies/wkjjy8pmvxnyiv1lqbjd'),(9,NULL,'2023-05-05 11:05:28','Harry Potter y la cámara de los secretos',3.5,2,'2002-08-04 00:00:00',200,'https://res.cloudinary.com/ericm76/image/upload/v1683284724/movies/fhs8mb8sus87gk9xuwwj.webp','Terminado el verano, Harry (Radcliffe) no ve la hora de abandonar la casa de sus odiosos tíos, pero, inesperadamente se presenta en su dormitorio Dobby, un elfo doméstico, que le anuncia que correrá un gran peligro si vuelve a Hogwarts. A pesar de los esfuerzos del elfo por retenerlo, Harry es rescatado por Ron y sus hermanos, con la ayuda de un coche volador, y recibido con los brazos abiertos en el cálido hogar de los Weasley. A pesar de que a Harry y a Ron les impiden entrar en el andén 9 ¾ y subir al Expreso de Hogwarts, ellos se las arreglan para llegar a tiempo de empezar el nuevo curso. Las hazañas de nuestro héroe ya se han extendido por todo el colegio, convirtiéndolo en el centro de una atención no deseada. ',8,'https://res.cloudinary.com/ericm76/image/upload/v1683284726/movies/yjlpjwndqelxcb2epdxb.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683284728/movies/ay7y2nrps6moldvs4n7k.jpg',0,1,1,'movies/fhs8mb8sus87gk9xuwwj','movies/yjlpjwndqelxcb2epdxb','movies/ay7y2nrps6moldvs4n7k'),(10,NULL,'2023-05-05 11:06:29','El rey león',9.1,3,'1994-02-04 00:00:00',89,'https://res.cloudinary.com/ericm76/image/upload/v1683284786/movies/eaephomo7lciypmy13za.webp','Una de las animaciones musicales más populares de Disney, \'\'El Rey León\'\' presenta la historia del viaje de un león llamado Simba quien algún día según su destino, se convertirá en rey. Durante el recorrido, Simba se va encontrando con diferentes situaciones y compañeros de viaje que le ayudarán a afrontar su destino.',10,'https://res.cloudinary.com/ericm76/image/upload/v1683284787/movies/gph2nrx6aboinukd4s8r.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683284789/movies/hjcugukmqsusew9yp4ch.jpg',1,0,1,'movies/eaephomo7lciypmy13za','movies/gph2nrx6aboinukd4s8r','movies/hjcugukmqsusew9yp4ch'),(11,NULL,'2023-05-05 11:07:26','Alicia en el país de las maravillas',5.7,2,'2010-07-04 00:00:00',108,'https://res.cloudinary.com/ericm76/image/upload/v1683284842/movies/wdaobnwk40ioebk9onxt.jpg','Alicia, una joven de 19 años, regresa al mundo mágico donde tuvo una aventura en su niñez, reuniéndose con sus viejos amigos y descubriendo su verdadero destino: acabar con el terrorífico reinado de la Reina Roja. ',NULL,'https://res.cloudinary.com/ericm76/image/upload/v1683284843/movies/amtsvbohb3y9qin5xlcr.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683284846/movies/ovtpeli6r4ab6bdmqw7s.webp',1,0,1,'movies/wdaobnwk40ioebk9onxt','movies/amtsvbohb3y9qin5xlcr','movies/ovtpeli6r4ab6bdmqw7s'),(12,NULL,'2023-05-05 11:08:23','Buscando a Nemo',8.3,2,'2003-07-04 00:00:00',110,'https://res.cloudinary.com/ericm76/image/upload/v1683284900/movies/gypfarydombhfgbbkwfk.webp','En esta gran aventura bajo el agua, con personajes memorables, humor y emoción. “Buscando a Nemo” sigue el cómico y trascendental viaje de un pez payaso sobre protector, llamado Marlin, y su hijo Nemo, quien es separado de la Gran Barrera del Arrecife , cuando Nemo es llevado de manera inesperada, lejos de su hogar en el océano y arrojado en un tanque de peces en la oficina de un dentista. Impulsado por la compañía de Dory, una pez amistosa pero olvidadiza, Marlin comienza un peligroso recorrido y se encuentra como el héroe de un intento épico para rescatar a su hijo.',8,'https://res.cloudinary.com/ericm76/image/upload/v1683284902/movies/qzanvedif6pezcurjhwk.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683284903/movies/wd1wwbvmfggnxcm7wjb8.webp',1,0,1,'movies/gypfarydombhfgbbkwfk','movies/qzanvedif6pezcurjhwk','movies/wd1wwbvmfggnxcm7wjb8'),(13,NULL,'2023-05-05 11:09:34','Toy Story',6.1,0,'1995-03-04 00:00:00',81,'https://res.cloudinary.com/ericm76/image/upload/v1683284971/movies/kxtx2ct5ey35damfadbn.jpg','El vaquero Woody es el juguete favorito del pequeño Andy, pero las cosas cambian cuando llega Buzz Lightyear, el héroe espacial de moda. Woody intenta deshacerse de él, pero las cosas no salen como las planeó y termina perdiéndose en la ciudad con Buzz como su única compañía. Uniendo sus fuerzas para regresar a casa, los dos rivales empiezan una aventura que los lleva a las manos de Sid, un chico del vecindario que destruye juguetes para crear versiones “mutantes”. Mientras permanecen atrapados en casa de Sid, los dos juguetes crean una amistad genuina y aprenden que a través del respeto y la confianza es posible escapar del peligro y regresar a casa.',7,'https://res.cloudinary.com/ericm76/image/upload/v1683284972/movies/x4v9e9rbhajfcsmux2or.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683284974/movies/ywj3mye7flslbg0tbck3.jpg',1,0,1,'movies/kxtx2ct5ey35damfadbn','movies/x4v9e9rbhajfcsmux2or','movies/ywj3mye7flslbg0tbck3'),(14,NULL,'2023-05-05 11:10:21','Toy Story 2',3.2,2,'1999-04-04 00:00:00',120,'https://res.cloudinary.com/ericm76/image/upload/v1683285017/movies/umoxr1di2ffdrio9bt6x.jpg','Esta vez, la aventura y diversión continúa cuando Andy se va a un campamento de verano y los juguetes permanecen en casa. La historia cambia cuando un coleccionista de juguetes obsesivo se lleva a Woody –quien no tiene ni la más mínima idea de lo que vale en el mercado. Ahora depende de Buzz Lightyear y el resto del equipo –Señor Cara de Papa, Slinky, Rec y Hamm- emprender un viaje para salvar a su amigo de convertirse en una pieza de museo. La misión de los juguetes es muy emocionante ya que deberán llegar a casa antes de que Andy lo haga.',7,'https://res.cloudinary.com/ericm76/image/upload/v1683285018/movies/c2smyoxwetvpqw84c6es.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683285021/movies/dqatiuwoc17kzstvcpma.jpg',0,0,1,'movies/umoxr1di2ffdrio9bt6x','movies/c2smyoxwetvpqw84c6es','movies/dqatiuwoc17kzstvcpma'),(15,NULL,'2023-05-05 11:11:24','La vida es bella',8.3,5,'1999-10-04 00:00:00',115,'https://res.cloudinary.com/ericm76/image/upload/v1683285081/movies/bv3ud2xwix0e24aypfii.jpg','Cuando un bibliotecario judío y su hijo se convierten en víctimas del Holocausto, él utiliza una mezcla perfecta de humor, voluntad y mucha imaginación para proteger a su hijo de los peligros en su campamento.',3,'https://res.cloudinary.com/ericm76/image/upload/v1683285083/movies/dyrkdhdjkqlpdq7hk5gg.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683285084/movies/yywzlau2c3kxgk6k6fza.jpg',0,0,1,'movies/bv3ud2xwix0e24aypfii','movies/dyrkdhdjkqlpdq7hk5gg','movies/yywzlau2c3kxgk6k6fza'),(16,NULL,'2023-05-05 11:12:26','Mi pobre angelito',3.2,1,'1990-01-04 00:00:00',120,'https://res.cloudinary.com/ericm76/image/upload/v1683285143/movies/hfg9aaqqtvbxnbdskib3.webp','Kevin McAllister es un niño de ocho años, miembro de una familia numerosa, que accidentalmente se queda abandonado en su casa cuando toda la familia se marcha a pasar las vacaciones a Francia. Kevin aprende a valerse por sí mismo e incluso a protegerse de Harry y Marv, dos bribones que se proponen asaltar todas las casas cerradas de su vecindario. en cuanto su madre lo echa en falta, regresa apresuradamente a Chicago para recuperar a su hijo.',1,'https://res.cloudinary.com/ericm76/image/upload/v1683285144/movies/nylykky3sl0fycfgj2s0.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683285146/movies/qfzeeox5pptzngsubabt.jpg',0,0,1,'movies/hfg9aaqqtvbxnbdskib3','movies/nylykky3sl0fycfgj2s0','movies/qfzeeox5pptzngsubabt'),(17,NULL,'2023-05-05 11:13:16','Intensamente',9.0,2,'2008-07-04 00:00:00',120,'https://res.cloudinary.com/ericm76/image/upload/v1683285192/movies/ueeuqvypc42gyw3yc5fh.webp','Riley es una pequeña de doce años que se muda a San Francisco por culpa del trabajo de su papá. La idea del cambio no le parece una buena idea. La niña se acerca a la adolescencia y las emociones que conviven dentro de su cabeza arman una verdadera revolución. Tristeza, Alegría, Desagrado, Furia y Temor se alternan el turno para controlar su comportamiento desde el centro de mando dentro su cabeza, lugar desde el que también se gestiona el almacenamiento de sus recuerdos. Cuando los preciosos recuerdos de la infancia se empiezan a fragmentar, Alegría y Tristeza se ven obligadas a abandonar el centro de mando para tratar de salvar los recuerdos de la niña del amenazante olvido. Intensamente es una cinta animada de Pixar que ofrece una mirada a lo más profundo de nuestras emociones.',7,'https://res.cloudinary.com/ericm76/image/upload/v1683285194/movies/ogkzfmnlwgxbx5qjq2pi.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683285196/movies/fcgnegwhw1utn0eoknjy.webp',0,0,1,'movies/ueeuqvypc42gyw3yc5fh','movies/ogkzfmnlwgxbx5qjq2pi','movies/fcgnegwhw1utn0eoknjy'),(18,NULL,'2023-05-05 11:14:07','Carrozas de fuego',9.9,7,'1981-07-04 00:00:00',180,'https://res.cloudinary.com/ericm76/image/upload/v1683285244/movies/cv2hs0qjnliiloplnfzp.jpg','Dos atletas de pista británicos, uno judío determinado y el otro cristiano devoto compiten en los Juegos Olímpicos de 1924.',NULL,'https://res.cloudinary.com/ericm76/image/upload/v1683285246/movies/xurwxto9jzwqxdue76gs.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683285247/movies/mcqhq3c7yitmyi8qefyk.jpg',0,1,1,'movies/cv2hs0qjnliiloplnfzp','movies/xurwxto9jzwqxdue76gs','movies/mcqhq3c7yitmyi8qefyk'),(20,NULL,'2023-05-05 11:15:21','I am Sam',9.0,4,'1999-03-04 00:00:00',130,'https://res.cloudinary.com/ericm76/image/upload/v1683285318/movies/bipqh0vcwemidxvkdveg.jpg','Una mujer sin techo abandona a su hija el mismo día en que nace dejándola en manos de su padre, Sam Dawson, quien tiene una deficiencia mental, ya que ella no quería tener un bebé con él, solo buscaba un lugar donde dormir. La película narra, al compás de los Beatles, las dificultades que tienen que atravesar cuando, a partir de los 7 años, Lucy empieza a tener más capacidad mental que su padre. El Estado se cuestiona la capacidad de Sam para educar a su hija por lo que se enfrenta a un juicio que le puede hacer perder su custodia.',3,'https://res.cloudinary.com/ericm76/image/upload/v1683285320/movies/y9er7scndvymfuzlalml.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683285322/movies/sww9st5jjatfdeznfuit.webp',1,0,1,'movies/bipqh0vcwemidxvkdveg','movies/y9er7scndvymfuzlalml','movies/sww9st5jjatfdeznfuit'),(21,NULL,'2023-05-18 13:18:55','Hotel Transylvania',7.1,1,'2012-05-04 00:00:00',90,'https://res.cloudinary.com/ericm76/image/upload/v1683285377/movies/zhm1drrtfdr3jm892ilj.jpg','Bienvenido al Hotel Transylvania de Drácula, fastuoso resort de cinco estrellas, donde los monstruos y sus familias pueden vivir libres de ser monstruos que son sin que los seres humanos los molesten. En un fin de semana especial, Drácula ha invitado a algunos de los monstruos más famosos del mundo - Frankenstein y su novia, la Momia, el Hombre Invisible, una familia de hombres lobo, y más - para celebrar el cumpleaños número 118 de su hija Mavis. Para Drácula, atender a todos esos monstruos legendarios no es problema - pero su mundo puede derrumbarse cuando un chico ordinario tropieza en el hotel.',10,'https://res.cloudinary.com/ericm76/image/upload/v1683285379/movies/w9jy0chfnbbe3uoycw5i.jpg','https://res.cloudinary.com/ericm76/image/upload/v1684415935/movies/movies/sv6kxw7dnj8e9pwdkguz.jpg',0,1,1,'movies/zhm1drrtfdr3jm892ilj','movies/w9jy0chfnbbe3uoycw5i','movies/movies/sv6kxw7dnj8e9pwdkguz'),(22,NULL,'2023-05-05 11:17:21','Titanes del pacífico',9.0,7,'2013-09-09 00:00:00',120,'https://res.cloudinary.com/ericm76/image/upload/v1683285438/movies/hdycoeqclo9dkjhufufk.jpg','Cuando legiones de monstruosas criaturas, denominadas Kaiju, comienzan a salir del mar, se inicia una guerra que acabará con millones de vidas y que consumirá los recursos de la humanidad durante interminables años. Para combatir a los Kaiju gigantes diseñan un tipo especial de arma: enormes robots, llamados Jaegers, que son controlados simultáneamente por dos pilotos cuyas mentes están bloqueadas en un puente neural. Pero incluso los Jaegers proporcionan poca defensa ante los incansables Kaiju. A punto de la derrota, las fuerzas que defienden a la humanidad no tienen otra elección que recurrir a dos insólitos héroes: un ex piloto acabado (Charlie Hunnam) y un aprendiz que todavía no se ha puesto a prueba (Rinko Kikuchi). Ambos se unen para traer a un legendario pero al parecer obsoleto Jaeger del pasado. Juntos, son la última esperanza de la humanidad frente al Apocalipsis que se avecina.',4,'https://res.cloudinary.com/ericm76/image/upload/v1683285440/movies/mgt5rpac2wo8hab6ni0j.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683285441/movies/ghn5zxnyy2dfk9eg5l50.jpg',0,0,1,'movies/hdycoeqclo9dkjhufufk','movies/mgt5rpac2wo8hab6ni0j','movies/ghn5zxnyy2dfk9eg5l50'),(34,'2023-05-03 19:53:49','2023-05-05 11:32:14','Aquaman',9.0,0,'2020-11-04 03:00:00',119,'https://res.cloudinary.com/ericm76/image/upload/v1683286330/movies/zhcc7kmhl0xlyzlid99c.webp',NULL,NULL,'https://res.cloudinary.com/ericm76/image/upload/v1683286332/movies/hgm9gbkgmfjxi227uyip.jpg','https://res.cloudinary.com/ericm76/image/upload/v1683286334/movies/r8bdrq9mqddbkpgpstpp.webp',NULL,NULL,1,'movies/zhcc7kmhl0xlyzlid99c','movies/hgm9gbkgmfjxi227uyip','movies/r8bdrq9mqddbkpgpstpp');
 /*!40000 ALTER TABLE `movies` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `password_resets`
---
-
-DROP TABLE IF EXISTS `password_resets`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `password_resets` (
-  `email` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`),
-  KEY `password_resets_token_index` (`token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `password_resets`
@@ -261,28 +92,6 @@ LOCK TABLES `password_resets` WRITE;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `seasons`
---
-
-DROP TABLE IF EXISTS `seasons`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `seasons` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `title` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
-  `number` int unsigned DEFAULT NULL,
-  `release_date` datetime NOT NULL,
-  `end_date` datetime NOT NULL,
-  `serie_id` int unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `seasons_serie_id_foreign` (`serie_id`),
-  CONSTRAINT `seasons_serie_id_foreign` FOREIGN KEY (`serie_id`) REFERENCES `series` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `seasons`
@@ -295,49 +104,14 @@ INSERT INTO `seasons` VALUES (1,NULL,NULL,'Primer Temporada',1,'2011-01-01 00:00
 UNLOCK TABLES;
 
 --
--- Table structure for table `sequelizemeta`
---
-
-DROP TABLE IF EXISTS `sequelizemeta`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sequelizemeta` (
-  `name` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
-  PRIMARY KEY (`name`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `sequelizemeta`
 --
 
 LOCK TABLES `sequelizemeta` WRITE;
 /*!40000 ALTER TABLE `sequelizemeta` DISABLE KEYS */;
-INSERT INTO `sequelizemeta` VALUES ('20230327082409-add-column-poster-movie.js'),('20230327082410-add-column-review-movie.js'),('20230327082411-add-column-photo-actor.js'),('20230327082412-add-column-banner&thumbnail-movies.js'),('20230327082413-add-column-show_banner-show_thumbnail-movies.js'),('20230327082414-add-column-visible-movies.js');
+INSERT INTO `sequelizemeta` VALUES ('20230327082409-add-column-poster-movie.js'),('20230327082410-add-column-review-movie.js'),('20230327082411-add-column-photo-actor.js'),('20230327082412-add-column-banner&thumbnail-movies.js'),('20230327082413-add-column-show_banner-show_thumbnail-movies.js'),('20230327082414-add-column-visible-movies.js'),('20230503214706-add-columns-public_key.js');
 /*!40000 ALTER TABLE `sequelizemeta` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `series`
---
-
-DROP TABLE IF EXISTS `series`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `series` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `title` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `release_date` datetime NOT NULL,
-  `end_date` datetime NOT NULL,
-  `genre_id` int unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `series_genre_id_foreign` (`genre_id`),
-  CONSTRAINT `series_genre_id_foreign` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `series`
@@ -348,26 +122,6 @@ LOCK TABLES `series` WRITE;
 INSERT INTO `series` VALUES (1,NULL,NULL,'Game of Thrones','2011-01-01 00:00:00','2016-03-04 00:00:00',11),(2,NULL,NULL,'Supernatural','2005-01-01 00:00:00','2016-01-04 00:00:00',6),(3,NULL,NULL,'The Walking Dead','2010-01-01 00:00:00','2016-01-04 00:00:00',2),(4,NULL,NULL,'Person of Interest','2011-01-01 00:00:00','2015-01-04 00:00:00',4),(5,NULL,NULL,'The Big Bang Theory','2007-01-01 00:00:00','2016-01-04 00:00:00',1),(6,NULL,NULL,'Breaking Bad','2008-01-01 00:00:00','2013-01-04 00:00:00',3);
 /*!40000 ALTER TABLE `series` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
-  `remember_token` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `users`
@@ -387,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-03  6:44:34
+-- Dump completed on 2023-05-19  9:50:22
